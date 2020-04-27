@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <title>Amelia X</title>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:black|Ubuntu" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+
+    </style>
+  </head>
+  <body style="background-image: url({{ url_for('static', filename='images/last.png') }});
+  background-size: cover; background-attachment: fixed; height: 100vh; position: relative; margin-left: 2%;">
+    <img />
+      <p id="suggestion" style="font-size: 16px; background-color: transparent; color: white; text-align: right; margin-top: -1000px;">
+        For mobile users, 
+      </br>
+      please rotate the device for optimized usage.</p>
+    <div style="position: absolute; bottom: 20%; left: 55%">
+        
+        <div id="chatboxx" style="margin-right: auto; width: 85vh;">
+          <p class="botText" style="background-color: transparent;">
+            <span>Hey, I'm Amelia, your personal virtual learning assistant. Feel free to ask me any academic-related question!</span>
+          </p>
+        </div>
+
+        <div id="userInputt" style="background-color: transparent; margin-right: auto; width: 95vh; margin-top: 20px;">
+          <input id="textInput" type="text" name="msg" placeholder="Ask me anything..." />
+        </div>
+
+    </div>
+
+    <script>
+      function getBotResponse() {
+          document.getElementById("suggestion").innerHTML = "";
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText" style="background-color: transparent; float: right"><span>' + rawText + "</span></p>";
+          
+          $("#textInput").val("");
+
+          $("#chatboxx").append(userHtml);
+          document
+            .getElementById("userInputt")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText" style="background-color: transparent; width: 80%;"><span>' + data + "</span></p>";
+            $("#chatboxx").append(botHtml);
+            document
+              .getElementById("userInputt")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+
+      </script>
+
+    </div>
+
+
+  </body>
+</html>

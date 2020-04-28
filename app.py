@@ -70,5 +70,7 @@ def get_bot_response():
     except IndexError:
         final_response = "Sorry, I didn't quite get that, could you say that again?"
     return str(final_response)
+
+
 if __name__ == "__main__":
     app.run()

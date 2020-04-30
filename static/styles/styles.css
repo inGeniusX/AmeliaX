@@ -110,14 +110,14 @@ h3 {
       .botText {
         color: white;
         font-family: monospace;
-        font-size: 12px;
+        font-size: 17px;
         text-align: left;
-        line-height: 18px;
+        line-height: 30px;
       }
       .botText span {
         background-color: #4169e1;
-        padding: 6px;
-        border-radius: 1px;
+        padding: 10px;
+        border-radius: 2px;
       }
       #tidbit {
         position: absolute;

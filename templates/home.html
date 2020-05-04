@@ -45,7 +45,7 @@
             .scrollIntoView({ block: "start", behavior: "smooth" });
 
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText" style="background-color: transparent; width: 80%;"><span>' + data + "</span></p>";
+            var botHtml = '<p class="botText" style="background-color: transparent; width: 80%; margin-top: 100px;"><span>' + data + "</span></p>";
             $("#chatboxx").append(botHtml);
             document
               .getElementById("userInputt")
